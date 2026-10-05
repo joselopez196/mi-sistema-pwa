@@ -240,7 +240,8 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)notiCheck(
 /* Boton Atras del telefono: cierra la ventana abierta en vez de salir de la app */
 let hs=0,skipPop=0,pb=0;
 const hPush=()=>{try{history.pushState({ov:1},'');hs++}catch(e){}};
-const hBack=()=>{if(hs<=0)return;hs--;pb++;if(pb===1)setTimeout(()=>{const n=pb;pb=0;skipPop++;try{history.go(-n)}catch(e){skipPop--}setTimeout(()=>{skipPop=0},500)},0)};
+/* Al cerrar con un botón no se retrocede el historial (history.go puede cerrar ventanas nuevas en algunos navegadores). Solo se cuenta. */
+const hBack=()=>{if(hs>0)hs--};
 addEventListener('popstate',()=>{if(skipPop>0){skipPop--;return}if(hs>0)hs--;
   if(cfFn!==null)cfClose(true);else if(dk)dkClose(true);else if(vi)closeV(true);else if(mdOpen)closeM(true)});
 
