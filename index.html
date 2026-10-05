@@ -427,7 +427,7 @@ function vHoy(){
   const undated=pend.filter(t=>!t.due).reverse(),hechasHoy=S.tasks.filter(t=>t.done&&t.doneAt===td).length;
   const act=S.projects.filter(p=>!p.arch&&p.st!=='terminado'&&S.tasks.some(t=>t.p===p.id&&!t.done));
   const go=(f,n,l,x)=>`<div class="st go" role="button" tabindex="0" onclick="${f}()" onkeydown="if(event.key==='Enter')${f}()"><b ${x||''}>${n}</b><span class="m">${l}</span></div>`;
-  $('#main').innerHTML=`<h2>Hoy <button class="btn g" style="font-size:.7rem;padding:2px 10px;vertical-align:middle;margin-left:10px;opacity:.7;font-weight:500" onclick="tour(0)">¿Cómo funciona?</button></h2><div id="clk" class="clk">${clockHtml()}</div>
+  $('#main').innerHTML=`<h2>Hoy <button class="btn g" style="font-size:.8rem;padding:9px 14px;min-height:38px;vertical-align:middle;margin-left:10px;font-weight:500" onclick="tour(0)">¿Cómo funciona?</button></h2><div id="clk" class="clk">${clockHtml()}</div>
   ${avisosHtml()}<div class="row hq"><input type="text" id="th" placeholder="Nueva tarea" aria-label="Nueva tarea" onkeydown="if(event.key==='Enter')addTH()">${dkBtn('thd',td)}<button class="btn" onclick="addTH()">Agregar tarea</button></div>
   <div class="stats">${go('goHoy',due.length-late,'Vence hoy')}${go('goTar',pend.length,'Pendientes')}${go('goTar',late,'Vencidas',late?'class="late"':'')}${go('goHec',hechasHoy,'Hecho para hoy')}</div>
   <h3>Acceso rápido</h3><div class="lg">${vis().slice(0,8).map(l=>linkTile(l,0)).join('')}</div>${vis().length>8?'<div class="m" style="margin-top:8px"><a href="#" onclick="tab=\'accesos\';draw();return false" style="color:var(--acc)">Ver todos los accesos</a></div>':''}
