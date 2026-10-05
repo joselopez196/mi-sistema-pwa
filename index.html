@@ -189,6 +189,8 @@ async function cloudInit(){try{if(!window.claude)return;const u=await claude.use
  cloud.onSnapshot(sn=>{if(!sn.exists)return;try{const q=JSON.parse(sn.data().json);if((q.at||0)>(S.at||0)){applyRemote(q);const ae=document.activeElement;if(!ae||!/INPUT|TEXTAREA|SELECT/.test(ae.tagName))draw();toast('Sincronizado con tus otros dispositivos')}}catch(e){}},()=>{});
  autoBk(true);if(tab==='hoy')draw()}catch(e){cloud=null}}
 const toast=m=>{const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',2600)};
+addEventListener('error',e=>{try{toast('Error: '+(e.message||'desconocido')+(e.lineno?' (línea '+e.lineno+')':''))}catch(_){}});
+addEventListener('unhandledrejection',e=>{try{toast('Error: '+((e.reason&&e.reason.message)||e.reason||'desconocido'))}catch(_){}});
 const pd={};let undoFn=null;
 const UA=navigator.userAgent,IOS=/iP(hone|ad|od)/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),AND=/Android/i.test(UA);
 const IOSM={'com.android.chrome':'googlechromes://','com.microsoft.emmx':'microsoft-edge-https://','com.samsung.android.dialer':'tel:','com.samsung.android.messaging':'sms:','com.android.vending':'itms-apps://'};
