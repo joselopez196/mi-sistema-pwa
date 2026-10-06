@@ -1,7 +1,7 @@
 {
-  "name": "Mi sistema",
-  "short_name": "Mi sistema",
-  "description": "Tareas, calendario, proyectos, archivos y accesos en un solo lugar.",
+  "name": "OrganizaYa",
+  "short_name": "OrganizaYa",
+  "description": "Organiza tus tareas, calendario, proyectos, archivos y accesos en un solo lugar.",
   "lang": "es",
   "dir": "ltr",
   "id": "./",
@@ -11,14 +11,67 @@
   "orientation": "any",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "categories": ["productivity", "utilities"],
+  "categories": [
+    "productivity",
+    "utilities",
+    "education"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Tareas", "short_name": "Tareas", "url": "./?tab=tareas", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Calendario", "short_name": "Calendario", "url": "./?tab=calendario", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+    {
+      "name": "Hoy",
+      "short_name": "Hoy",
+      "url": "./?tab=hoy",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Tareas",
+      "short_name": "Tareas",
+      "url": "./?tab=tareas",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Calendario",
+      "short_name": "Calendario",
+      "url": "./?tab=calendario",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
   ]
 }
