@@ -1,10 +1,10 @@
-/* Mi sistema - service worker
+/* OrganizaYa - service worker
    - Guarda la app para que abra sin conexión.
    - index.html: primero red, y si no hay internet usa la copia guardada (así recibes las actualizaciones).
    - Íconos, manifest y fuentes: primero la copia guardada.
    Sube el número de VERSION cada vez que publiques cambios. */
-const VERSION = 'v5';
-const CACHE = 'mi-sistema-' + VERSION;
+const VERSION = 'v6';
+const CACHE = 'organizaya-' + VERSION;
 const SHELL = [
   './',
   './index.html',
@@ -27,7 +27,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((ks) => Promise.all(ks.filter((k) => k.startsWith('mi-sistema-') && k !== CACHE).map((k) => caches.delete(k))))
+      .then((ks) => Promise.all(ks.filter((k) => (k.startsWith('mi-sistema-') || k.startsWith('organizaya-')) && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
