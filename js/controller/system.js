@@ -3,6 +3,9 @@
 addEventListener('error',e=>{try{toast('Error: '+(e.message||'desconocido')+(e.lineno?' (línea '+e.lineno+')':''))}catch(_){}});
 addEventListener('unhandledrejection',e=>{try{toast('Error: '+((e.reason&&e.reason.message)||e.reason||'desconocido'))}catch(_){}});
 let dip=null;
+const isIOSDevice=()=>/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const isStandalone=()=>window.matchMedia?.('(display-mode: standalone)').matches||window.navigator.standalone===true;
+function instalarIOS(){openM(`<div class="box"><div class="m">OrganizaYa · Instalación</div><b style="font-size:1.2rem">Instalar en iPhone o iPad</b><p>En Safari toca <b>Compartir</b> → <b>Añadir a pantalla de inicio</b> → <b>Añadir</b>.</p><div class="row" style="margin:0"><button class="btn" onclick="closeM()">Entendido</button></div></div>`)}
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;draw()});
 addEventListener('appinstalled',()=>{dip=null;draw();toast('App instalada')});
 async function instalar(){if(!dip)return;try{dip.prompt();await dip.userChoice}catch(e){}dip=null;draw()}
